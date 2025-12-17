@@ -23,3 +23,5 @@ urlpatterns = [
     #Base API Endpoints
     path('api/v1/', include('accounts.urls')),
 ]
+
+# admin password = hello#123
