@@ -1,16 +1,22 @@
-import { useState, useContext, createContext } from "react"
+// src/components/AuthProvider.jsx
 
-//Create the context
-const AuthContext = createContext({children});
+import { createContext, useState } from "react";
 
-const AuthProvider = () => {
-    const {isLoggedIn, setIsLoggedIn} = useState(!!localStorage.getItem('accessToken'))
+// Create the context
+const AuthContext = createContext();
+
+// AuthProvider component
+const AuthProvider = ({ children }) => {
+  // Initialize login state by checking localStorage only once
+  const [isLoggedIn, setIsLoggedIn] = useState(
+        !!localStorage.getItem("accessToken"))
+
   return (
-    <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
-        {children}
+    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+      {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
-export default AuthProvider
+export default AuthProvider;
 export {AuthContext};

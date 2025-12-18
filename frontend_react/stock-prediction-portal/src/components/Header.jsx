@@ -1,11 +1,12 @@
-import React from 'react';
 import Button from './Button';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from './AuthProvider';
+import { useContext } from 'react';
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useContext(AuthCOntext) 
-  const navigate = useNavigate
-
+  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext) ;
+  const navigate = useNavigate();
+  
   const handleLogout = () =>{
     localStorage.removeItem('accessToken')
     localStorage.removeItem('refreshToken')
@@ -23,16 +24,15 @@ const Header = () => {
         {/* Right side: Buttons */}
         <div className="ms-auto">
           {isLoggedIn ? (
-           <button className='btn btn-danger'onClick={handleLogout}>Logout</button>
+           <button className='btn btn-danger'onClick={handleLogout} type="button">Logout</button>
           ): (
             <>
-          <Button text="Login" class="btn-outline-info" url="/login"/>
+          <Button text="Login" className="btn-outline-info" url="/login"/>
           &nbsp;
-          <Button text="Register" class="btn-info" url="/register"/>
+          <Button text="Register" className="btn-info" url="/register"/>
           </>
           )}
         </div>
-
       </div>
     </nav>
   );

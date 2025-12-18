@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {AuthContext} from '../AuthProvider'
-
+import { AuthContext } from "./AuthProvider";
+import { useContext } from 'react';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useContext(AuthCOntext) 
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
+ 
 
   const navigate = useNavigate();
 
