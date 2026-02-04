@@ -1,1 +1,1 @@
-A project focused mainly on django rest framework and react jwt authentication. You can also consider this a django-react starter template.
+It's a django-react starter template with authentication setup on both frontend and backend to signin, signup and singout using jwt tokens access and refresh tokens.
